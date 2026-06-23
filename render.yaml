@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: rf4-key-server
+    runtime: python3
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ADMIN_KEY
+        generateValue: false
+        value: rf4admin2025   # 部署后请在 Render 后台改成你自己的强密钥！
